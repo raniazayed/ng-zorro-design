@@ -1,0 +1,50 @@
+<div class="main-actions">
+  <button nz-button nzType="default" [nzLoading]="loading" (click)="removeProducts()"
+    [disabled]="setOfCheckedId.size === 0 || loading">Remove Items</button>
+  
+  <button (click)="addProduct()" nz-button nzType="primary">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+    Add product</button>
+</div>
+
+<nz-table #rowSelectionTable nzShowSizeChanger [nzData]="listOfData"
+  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+  <thead>
+    <tr>
+      <th [(nzChecked)]="checked" 
+      [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+      <th>{{"Name"|translate}}</th>
+      <th>{{"Description"|translate}}</th>
+      <th>{{"Quantity"|translate}}</th>
+      <th>{{"Expiration Date"|translate}}</th>
+      <th>{{"Actions"|translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data">
+      <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+      <td>{{ locale === 'ar'? data.name.arabic: data.name.english }}</td>
+      <td>{{ data.description }}</td>
+      <td>{{ data.quantity }}</td>
+      <td [ngClass]="{expired: data.expire_date < today}">
+        {{ data.expire_date | date }}
+      </td>
+      <td>
+        <i class="btn-mr cursor-pointer" nz-icon (click)="editProduct(data)" [nzType]="'edit'"
+          [nzTheme]="'twotone'"></i>
+          <button
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure delete this Product?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="confirm(data.id)"
+          (nzOnCancel)="cancel()"
+          nz-button
+        >
+          <i class="cursor-pointer" nz-icon
+            [nzType]="'delete'" [nzTwotoneColor]="'red'"
+            [nzTheme]="'twotone'"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

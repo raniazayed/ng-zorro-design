@@ -1,0 +1,52 @@
+<form nz-form [formGroup]="productForm">
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSpan]="6" nzFor="name">Name</nz-form-label>
+    <nz-form-control 
+    nzErrorTip="Please input your Name!"
+    [nzSpan]="14">
+      <input nz-input name="name"
+       formControlName="name" type="name" id="name">
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSpan]="6" 
+    nzFor="quantity">Quantity</nz-form-label>
+    <nz-form-control
+    nzErrorTip="Please input a valid  Quantity!"
+    [nzSpan]="14">
+      <nz-input-number 
+      [nzMin]="1"
+      [nzStep]="1"
+       name="quantity" formControlName="quantity" id="quantity"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Expiration Date</nz-form-label>
+    <nz-form-control       
+     nzErrorTip="Please input  Expiration Date!"
+     [nzSm]="16" [nzXs]="24">
+      <nz-date-picker
+       formControlName="expire_date"
+       ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7">Description</nz-form-label>
+    <nz-form-control [nzSpan]="12" >
+      <textarea formControlName="description" nz-input rows="2" placeholder="Enter Product Description"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+
+
+  <div class="text-right" *nzModalFooter>
+    <button nz-button nzType="default" (click)="onCancel()">Cancel</button>
+    <button  nz-button nzType="primary"       
+    (click)="onSubmit()"
+    >Submit</button>
+  </div>
+
+</form>

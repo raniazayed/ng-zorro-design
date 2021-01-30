@@ -1,0 +1,16 @@
+.btn-mr {
+    margin-right: 1rem;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.expired{
+    color: red;
+}
+
+.main-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
