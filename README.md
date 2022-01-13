@@ -1,10 +1,13 @@
 # AntDesign
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+it's small contact form but integrated with bg-zorro library.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run g`it clone https://github.com/raniazayed/ng-zorro-design.git`. `Run npm install` and then `Run ng serve`.
+
+
 
 ## Code scaffolding
 
